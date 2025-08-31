@@ -1,0 +1,19 @@
+
+# Ignorer les caches Python
+backend/__pycache__/
+#rag/__pycache__/
+__pycache__/
+*.pyc
+
+# Ignorer les fichiers sensibles
+.env
+
+# Ignorer le dossier rag et certains fichiers à l'intérieur
+rag/__pycache__/
+rag/data/
+rag/faiss_index/
+rag/ingest.py
+rag/qa.py
+rag/serializers.py
+rag/urls.py
+rag/views.py
