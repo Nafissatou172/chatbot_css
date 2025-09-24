@@ -1,0 +1,40 @@
+<div class="chat-root">
+  <aside class="sidebar">
+    <h3>Conversation</h3>
+    <p class="hint">Les réponses proviennent de vos documents (PDF).</p>
+  </aside>
+
+  <section class="chat-area">
+    <div class="chat-header">
+        <button class="back-button" (click)="goHome()">
+          ← Retour
+        </button>
+        <h1>Chatbot AWA</h1>
+        <div class="status-indicator">
+          <div class="status-dot"></div>
+          En ligne
+        </div>
+      </div>
+      
+    <div class="messages" id="messages">
+      <div *ngFor="let m of messages" [ngClass]="m.sender === 'user' ? 'msg user' : 'msg bot'">
+        <div class="bubble">
+          <span class="who">{{ m.sender === 'user' ? 'Vous' : 'AWA' }}</span>
+          <div class="text">{{ m.text }}</div>
+        </div>
+      </div>
+
+      <div *ngIf="streamingAnswer" class="msg bot">
+        <div class="bubble">
+          <span class="who">Bot</span>
+          <div class="text">{{ streamingAnswer }}<span class="cursor">▍</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="composer">
+      <input [(ngModel)]="userMessage" placeholder="Écrivez votre message..." (keyup.enter)="sendMessage()" />
+      <button (click)="sendMessage()" [disabled]="loading">{{ loading ? '...' : 'Envoyer' }}</button>
+    </div>
+  </section>
+</div>

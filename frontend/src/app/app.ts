@@ -1,9 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { Chat} from './chat/chat/chat'; // chemin à adapter
+
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
+  selector: 'app-root', 
+  standalone : true,
+  imports: [RouterOutlet, Chat, RouterLink, RouterModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

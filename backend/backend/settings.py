@@ -74,12 +74,15 @@ RAG_UPLOAD_DIR = RAG_DATA_DIR / "uploads"
 RAG_DATA_DIR.mkdir(parents=True, exist_ok=True)
 RAG_UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
-#Chroma
-CHROMA_PERSIST_DIR = str(RAG_DATA_DIR / "chroma_db")
+# Celery / Redis
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0')
+CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 
-# Prompt system
-RAG_SYSTEM_PROMPT = os.getenv("RAG_SYSTEM_PROMPT", "Vous êtes un assistant de la Caisse de Sécurité Sociale. Répondez en français, de façon claire, en vous appuyant uniquement sur le contexte fourni.")
+# Chroma server URL (optional). If set, chromadb will use REST client.
+CHROMA_SERVER_URL = os.getenv('CHROMA_SERVER_URL', '')
 
+# Mistral (API key)
+MISTRAL_API_KEY = os.getenv('MISTRAL_API_KEY', '')
 # LLM API keys (mettre dans .env)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 HF_API_KEY = os.getenv("HF_API_KEY", "")

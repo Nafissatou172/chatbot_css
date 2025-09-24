@@ -11,9 +11,5 @@ __pycache__/
 # Ignorer le dossier rag et certains fichiers à l'intérieur
 rag/__pycache__/
 rag/data/
-rag/faiss_index/
-rag/ingest.py
-rag/qa.py
-rag/serializers.py
-rag/urls.py
-rag/views.py
+rag/chroma/
+
